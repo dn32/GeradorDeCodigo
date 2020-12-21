@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -9,7 +10,7 @@ namespace GeradorDeTeste
     {
         private void SalvarEmArquivo(string codigo)
         {
-            var path = @"C:\Users\dn\source\repos\GeradorDeTeste\GeradorDeTeste.Host\Comparador.cs";
+            var path = @"C:\dev\GeradorDeCodigo\GeradorDeCodigo.Host\Comparador.cs";
             if (File.Exists(path)) File.Delete(path);
             var arquivo = File.CreateText(path);
             arquivo.Write(codigo);

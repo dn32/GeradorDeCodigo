@@ -8,7 +8,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="3.8.0" />
-    <ProjectReference Include="..\GeradorDeTeste\GeradorDeCodigo.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GeradorDeCodigo\GeradorDeCodigo.csproj" OutputItemType="Analyzer" />
   </ItemGroup>
 
 </Project>
