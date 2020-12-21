@@ -43,19 +43,13 @@ namespace GeradorDeTeste
                 }
 
                 classes = classes.OrderByDescending(x => x.Nome.Length).ToList();
-                namespaces = namespaces.GroupBy(x => x).Select(x => x.First()).ToList();
-
+                namespaces = namespaces.GroupBy(x => x).Select(x => x.First()).OrderBy(x => x).ToList();
+                
                 var codigo = Template(namespaces, classes).Trim();
                 SalvarEmArquivo(codigo);
 
                 //context.AddSource("Factory.cs", SourceText.From(source, Encoding.UTF8));
             }
-        }
-
-        private static List<IPropertySymbol> ObterPropriedades(ITypeSymbol candidateTypeSymbol)
-        {
-            return candidateTypeSymbol.GetMembers().OfType<IPropertySymbol>()
-                .Where(x => x.GetMethod is not null).ToList();
         }
     }
 }

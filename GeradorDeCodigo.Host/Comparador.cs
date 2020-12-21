@@ -1,5 +1,8 @@
 using System;
-using GeradorDeTeste.Host;
+using GeradorDeCodigo.Host.Model.Categorias;
+using GeradorDeCodigo.Host.Model.Clientes;
+using GeradorDeCodigo.Host.Model.Marcas;
+using GeradorDeCodigo.Host.Model.Produtos;
 
 public class Comparador
 {

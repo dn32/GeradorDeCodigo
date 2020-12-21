@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.CodeAnalysis;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -15,6 +16,12 @@ namespace GeradorDeTeste
             var arquivo = File.CreateText(path);
             arquivo.Write(codigo);
             arquivo.Close();
+        }
+
+        private List<IPropertySymbol> ObterPropriedades(ITypeSymbol candidateTypeSymbol)
+        {
+            return candidateTypeSymbol.GetMembers().OfType<IPropertySymbol>()
+                .Where(x => x.GetMethod is not null).ToList();
         }
 
         private string Join<T>(string separados, IEnumerable<T> colecao, Func<T, string> func) =>
