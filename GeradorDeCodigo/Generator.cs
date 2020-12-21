@@ -25,17 +25,18 @@ namespace GeradorDeTeste
                 {
                     var model = context.Compilation.GetSemanticModel(candidateTypeNode.SyntaxTree);
                     var candidateTypeSymbol = model.GetDeclaredSymbol(candidateTypeNode) as ITypeSymbol;
-                    var typeInfo = model.GetTypeInfo(candidateTypeNode);
+
+                    //Passa somente quem implementa a interface IComparador
+                    if (!candidateTypeSymbol.AllInterfaces.Any(x => x.Name == "IComparador")) continue;
 
                     namespaces.Add(candidateTypeSymbol.ContainingNamespace.ToDisplayString());
 
-                    var propriedades_ = candidateTypeSymbol.GetMembers().OfType<IPropertySymbol>()
-                        .Where(_ => _.SetMethod is not null && _.SetMethod.DeclaredAccessibility == Accessibility.Public).ToList();
+                    var propriedades = ObterPropriedades(candidateTypeSymbol);
 
                     var classe = new Classe
                     {
                         Nome = candidateTypeNode.Identifier.Text,
-                        Propriedade = propriedades_.Select(x => new Propriedade { Nome = x.Name }).ToList()
+                        Propriedade = propriedades.Select(x => new Propriedade { Nome = x.Name }).ToList()
                     };
 
                     classes.Add(classe);
@@ -49,6 +50,12 @@ namespace GeradorDeTeste
 
                 //context.AddSource("Factory.cs", SourceText.From(source, Encoding.UTF8));
             }
+        }
+
+        private static List<IPropertySymbol> ObterPropriedades(ITypeSymbol candidateTypeSymbol)
+        {
+            return candidateTypeSymbol.GetMembers().OfType<IPropertySymbol>()
+                .Where(x => x.GetMethod is not null).ToList();
         }
     }
 }
