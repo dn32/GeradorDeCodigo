@@ -25,14 +25,14 @@ namespace GeradorDeTeste.Host
         public int ObterComparador() => 3;
     }
 
-    //[IComparador]
-    //public class Produto : IComparador
-    //{
-    //    public int CodigoDoProduto { get; set; }
-    //    public string NomeDoProduto { get; set; }
-    //    public Marca Marca { get; set; }
-    //    public Categoria Categoria { get; set; }
+    [IComparador]
+    public class Produto : IComparador
+    {
+        public int CodigoDoProduto { get; set; }
+        public string NomeDoProduto { get; set; }
+        public Marca Marca { get; set; }
+        public Categoria Categoria { get; set; }
 
-    //    public int ObterComparador() => 1;
-    //}
+        public int ObterComparador() => 1;
+    }
 }

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeradorDeTeste", "GeradorDeTeste\GeradorDeTeste.csproj", "{8438D18C-B1EB-42F7-8005-5004F229F445}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeradorDeCodigo", "GeradorDeCodigo\GeradorDeCodigo.csproj", "{8438D18C-B1EB-42F7-8005-5004F229F445}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeradorDeTeste.Host", "GeradorDeTeste.Host\GeradorDeTeste.Host.csproj", "{2313C34E-AD11-4E1B-8185-5AA89E6A1BCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeradorDeCodigo.Host", "GeradorDeCodigo.Host\GeradorDeCodigo.Host.csproj", "{2313C34E-AD11-4E1B-8185-5AA89E6A1BCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

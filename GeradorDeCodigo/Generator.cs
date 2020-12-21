@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using Microsoft.CodeAnalysis;
@@ -28,7 +29,8 @@ namespace GeradorDeTeste
 
                     namespaces.Add(candidateTypeSymbol.ContainingNamespace.ToDisplayString());
 
-                    var propriedades_ = candidateTypeSymbol.GetMembers().Where(x => !x.Name.Contains("_") && !x.Name.Contains("."));
+                    var propriedades_ = candidateTypeSymbol.GetMembers().OfType<IPropertySymbol>()
+                        .Where(_ => _.SetMethod is not null && _.SetMethod.DeclaredAccessibility == Accessibility.Public).ToList();
 
                     var classe = new Classe
                     {
